@@ -1,0 +1,37 @@
+Searching 36470 files for "App\User" (case sensitive)
+
+/Users/mac/Code/laravel-shop/app/Http/Controllers/Auth/RegisterController.php:
+    3  namespace App\Http\Controllers\Auth;
+    4  
+    5: use App\User;
+    6  use App\Http\Controllers\Controller;
+    7  use Illuminate\Support\Facades\Validator;
+    .
+   59       *
+   60       * @param  array  $data
+   61:      * @return \App\Models\User
+   62       */
+   63      protected function create(array $data)
+
+/Users/mac/Code/laravel-shop/config/auth.php:
+   68          'users' => [
+   69              'driver' => 'eloquent',
+   70:             'model' => App\Models\User::class,
+   71          ],
+   72  
+
+/Users/mac/Code/laravel-shop/config/services.php:
+   31  
+   32      'stripe' => [
+   33:         'model' => App\Models\User::class,
+   34          'key' => env('STRIPE_KEY'),
+   35          'secret' => env('STRIPE_SECRET'),
+
+/Users/mac/Code/laravel-shop/database/factories/UserFactory.php:
+   14  */
+   15  
+   16: $factory->define(App\Models\User::class, function (Faker $faker) {
+   17      return [
+   18          'name' => $faker->name,
+
+5 matches across 4 files
