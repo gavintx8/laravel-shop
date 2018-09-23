@@ -26,7 +26,6 @@ class EmailVerificationController extends Controller
         if (!$user = User::where('email', $email)->first()) {
             throw new InvalidRequestException('用户不存在');
         }
-        }
         // 将指定的 key 从缓存中删除，由于已经完成了验证，这个缓存就没有必要继续保留。
         Cache::forget('email_verification_'.$email);
         // 最关键的，要把对应用户的 `email_verified` 字段改为 `true`。
