@@ -51,12 +51,12 @@ class ProductsController extends Controller
      * @param Content $content
      * @return Content
      */
-    public function edit($id, Content $content)
+    public function edit($id)
     {
-        return $content
-            ->header('Edit')
-            ->description('description')
-            ->body($this->form()->edit($id));
+        return Admin::content(function (Content $content) use ($id) {
+            $content->header('编辑商品');
+            $content->body($this->form()->edit($id));
+        });
     }
 
     /**
