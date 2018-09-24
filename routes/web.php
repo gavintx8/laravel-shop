@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
         Route::get('orders/{order}/review', 'OrdersController@review')->name('orders.review.show');
         Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
+        Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
     });
     // 结束
 });
@@ -42,10 +43,3 @@ Route::get('products/{product}', 'ProductsController@show')->name('products.show
 Route::post('payment/alipay/notify', 'PaymentController@alipayNotify')->name('payment.alipay.notify');
 Route::post('payment/wechat/notify', 'PaymentController@wechatNotify')->name('payment.wechat.notify');
 
-Route::get('alipay', function() {
-    return app('alipay')->web([
-        'out_trade_no' => time(),
-        'total_amount' => '1',
-        'subject' => 'test subject - 测试',
-    ]);
-});
