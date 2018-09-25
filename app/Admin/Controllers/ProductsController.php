@@ -11,6 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use App\Models\Category;
+use App\Jobs\SyncOneProductToES;
 
 class ProductsController extends Controller
 {
@@ -163,9 +164,12 @@ class ProductsController extends Controller
             });
 
             // 定义事件回调，当模型即将保存时会触发这个回调
-            $form->saving(function (Form $form) {
-                $form->model()->price = collect($form->input('skus'))->where(Form::REMOVE_FLAG_NAME, 0)->min('price') ?: 0;
+            $form->saved(function (Form $form) {
+                $product = $form->model();
+                $this->dispatch(new SyncOneProductToES($product));
             });
+
+            return $form;
         });
     }
 }
