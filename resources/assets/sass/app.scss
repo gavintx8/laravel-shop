@@ -132,29 +132,22 @@ body {
       }
     }
   }
-  .filters {
-    font-size: 12px;
-    margin-bottom: 10px;
-    &>.row {
-      border-bottom: 1px solid #eee;
-      .filter-key {
-        width: 150px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        background: #f3f3f3;
-        color: #666;
+  .filter {
+      border: 1px red solid;
+      font-size: 12px;
+      padding: 2px 0 2px 2px;
+      .filter-value {
+        color: red;
       }
-      .filter-values {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        a {
-          margin-right: 50px;
-          color: #666;
-          text-decoration: none;
-        }
+      .remove-filter {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        background: red;
+        padding: 2px;
       }
     }
-  }
+  
 }
 
 .products-show-page {
