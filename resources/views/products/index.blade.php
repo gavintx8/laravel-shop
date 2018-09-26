@@ -131,7 +131,6 @@
         $('.search-form').submit();
       });
     });
-    //})
 
     // 定义一个函数，用于解析当前 Url 里的参数，并以 Key-Value 对象形式返回
     function parseSearch() {

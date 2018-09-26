@@ -96,7 +96,6 @@ class ProductsController extends Controller
 
         // 定义一个数组
         $propertyFilters = [];
-        // 从用户请求参数获取 filters
         if ($filterString = $request->input('filters')) {
             $filterArray = explode('|', $filterString);
             foreach ($filterArray as $filter) {
