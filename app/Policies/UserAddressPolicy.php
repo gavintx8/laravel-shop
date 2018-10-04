@@ -24,4 +24,14 @@ class UserAddressPolicy
     {
         return $address->user_id == $user->id;
     }
+
+    public function update(User $user, UserAddress $address)
+    {
+        return $user->isAuthorOf($address);
+    }
+
+    public function destroy(User $user, UserAddress $address)
+    {
+        return $user->isAuthorOf($address);
+    }
 }

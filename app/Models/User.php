@@ -26,6 +26,10 @@ class User extends Authenticatable implements JWTSubject
         'email_verified' => 'boolean',
     ];
 
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
